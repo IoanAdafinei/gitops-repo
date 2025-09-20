@@ -2,11 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
+  namespace: frontend-ns
+  annotations:
+    # Make this an internal Azure LB, no public IP created
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
-  type: LoadBalancer   # This tells AKS to provision a public IP
+  type: LoadBalancer
   selector:
     app: frontend
   ports:
-    - port: 80          # Port exposed outside (Azure Public IP)
+    - port: 80          # Port within VNet
       targetPort: 3000  # Port your container listens on
-
