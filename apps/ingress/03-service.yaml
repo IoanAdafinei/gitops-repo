@@ -4,6 +4,7 @@ metadata:
   name: ingress-nginx
   namespace: ingress-nginx
   annotations:
+    argocd.argoproj.io/sync-options: "Replace=true"
     service.beta.kubernetes.io/azure-load-balancer-resource-group: rg-aks-test # replace with your main RG
     service.beta.kubernetes.io/azure-load-balancer-ip: "9.163.30.195"     # replace with Argo CD IP
 spec:
