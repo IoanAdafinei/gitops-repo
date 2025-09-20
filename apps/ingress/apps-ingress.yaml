@@ -5,7 +5,7 @@ metadata:
   namespace: frontend-ns
 spec:
   rules:
-    - host: "<ARGO_PUBLIC_IP>"   # or your custom domain
+    - host: "9.163.30.195"   # or your custom domain
       http:
         paths:
           - path: /frontend

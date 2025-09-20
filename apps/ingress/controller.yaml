@@ -13,18 +13,19 @@ spec:
       labels:
         app: ingress-nginx
     spec:
+      serviceAccountName: ingress-nginx   # ✅ important for RBAC
       containers:
-      - name: controller
-        image: k8s.gcr.io/ingress-nginx/controller:v1.9.1
-        args:
-          - /nginx-ingress-controller
-          - --publish-service=$(POD_NAMESPACE)/ingress-nginx
-        env:
-          - name: POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-        ports:
-          - containerPort: 80
-          - containerPort: 443
+        - name: controller
+          image: k8s.gcr.io/ingress-nginx/controller:v1.9.1
+          args:
+            - /nginx-ingress-controller
+            - --publish-service=$(POD_NAMESPACE)/ingress-nginx
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - containerPort: 80
+            - containerPort: 443
 
