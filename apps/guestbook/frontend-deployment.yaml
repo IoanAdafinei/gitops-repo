@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend-container
+        image: ioanro/frontend-test:latest   # <-- make sure this is rebuilt with Nginx + nginx.conf
+        ports:
+          - containerPort: 3000
+        # No need for BACKEND_URL env anymore
+
