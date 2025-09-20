@@ -9,6 +9,7 @@ metadata:
     service.beta.kubernetes.io/azure-load-balancer-ip: "9.163.30.195"     # replace with Argo CD IP
 spec:
   type: LoadBalancer
+  loadBalancerIP: "9.163.30.195"
   selector:
     app: ingress-nginx
   ports:
