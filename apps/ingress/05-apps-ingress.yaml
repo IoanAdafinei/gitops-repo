@@ -5,8 +5,7 @@ metadata:
   namespace: frontend-ns
 spec:
   rules:
-    - host: "9.163.30.195"   # or your custom domain
-      http:
+    - http:
         paths:
           - path: /frontend
             pathType: Prefix
