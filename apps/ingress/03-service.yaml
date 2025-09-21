@@ -15,6 +15,9 @@ spec:
     - name: argocd
       port: 80       # External port for Argo CD UI
       targetPort: 80 # Pod port
+    - name: argocd-https
+      port: 443       # External port for Argo CD UI
+      targetPort: 443 # Pod port
     - name: frontend
       port: 3000       # External port for frontend
       targetPort: 3000
