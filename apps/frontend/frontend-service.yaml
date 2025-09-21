@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: frontend-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: frontend
   ports:
     - port: 3000       # Internal port
       targetPort: 3000
+      nodePort: 30080  # External port
 
