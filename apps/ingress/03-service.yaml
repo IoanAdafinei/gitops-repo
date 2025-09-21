@@ -5,7 +5,10 @@ metadata:
   namespace: ingress-nginx
   annotations:
     argocd.argoproj.io/sync-options: "Replace=true"
+<<<<<<< HEAD
     # service.beta.kubernetes.io/azure-load-balancer-resource-group: rg-aks-test # replace with your main RG
+=======
+>>>>>>> fc388f4 (again)
     service.beta.kubernetes.io/azure-load-balancer-ip: "9.163.30.195"     # replace with Argo CD IP
 spec:
   type: LoadBalancer
@@ -13,10 +16,9 @@ spec:
   selector:
     app: ingress-nginx
   ports:
-    - name: http
-      port: 80
-      targetPort: 80
-    - name: https
-      port: 443
-      targetPort: 443
-
+    - name: argocd
+      port: 80       # External port for Argo CD UI
+      targetPort: 80 # Pod port
+    - name: frontend
+      port: 3000       # External port for frontend
+      targetPort: 3000
